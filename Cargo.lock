@@ -728,6 +728,17 @@ dependencies = [
 ]
 
 [[package]]
+name = "server"
+version = "0.1.0"
+dependencies = [
+ "analyzer",
+ "biome_js_parser",
+ "biome_js_syntax",
+ "biome_rowan",
+ "type_info",
+]
+
+[[package]]
 name = "simdutf8"
 version = "0.1.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
