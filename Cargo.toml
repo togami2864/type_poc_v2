@@ -12,3 +12,5 @@ biome_analyze = { git = "https://github.com/biomejs/biome.git" }
 biome_js_parser = { git = "https://github.com/biomejs/biome.git" }
 biome_js_syntax = { git = "https://github.com/biomejs/biome.git" }
 biome_rowan = { git = "https://github.com/biomejs/biome.git" }
+
+rustc-hash         = "2.1.0"

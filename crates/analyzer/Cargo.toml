@@ -1,0 +1,12 @@
+[package]
+name = "analyzer"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+type_info = { path = "../type_info" }
+
+biome_js_syntax = { workspace = true }
+biome_rowan = { workspace = true }
+
+rustc-hash = { workspace = true }
