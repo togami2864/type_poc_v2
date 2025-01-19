@@ -1,0 +1,10 @@
+[package]
+name = "visitor"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+biome_analyze = { workspace = true }
+biome_js_parser = { workspace = true }
+biome_js_syntax = { workspace = true }
+biome_rowan = { workspace = true }
