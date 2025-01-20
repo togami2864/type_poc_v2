@@ -22,6 +22,17 @@ impl Server {
         }
     }
 
+    pub fn debug(&self) {
+        let analyzer = self.analyzer.lock().unwrap();
+        let type_info_table = analyzer.type_info_table();
+        for (path, info) in type_info_table {
+            println!("Path: {:?}", path);
+            for (node, type_info) in info {
+                println!("Node: {:?}, TypeInfo: {:?}", node, type_info);
+            }
+        }
+    }
+
     pub fn init(&self, user_paths: Vec<PathBuf>) -> Result<(), std::io::Error> {
         let mut analyzer = self.analyzer.lock().unwrap();
 

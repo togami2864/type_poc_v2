@@ -854,6 +854,9 @@ version = "0.1.0"
 [[package]]
 name = "type_poc_v2"
 version = "0.1.0"
+dependencies = [
+ "server",
+]
 
 [[package]]
 name = "unicode-bom"

@@ -22,6 +22,10 @@ impl Analyzer {
         }
     }
 
+    pub fn type_info_table(&self) -> &FxHashMap<PathBuf, FxHashMap<JsSyntaxNode, TypeInfo>> {
+        &self.type_info_table
+    }
+
     pub fn get_type_info(&self, path: &PathBuf, node: &JsSyntaxNode) -> Option<TypeInfo> {
         self.type_info_table
             .get(path)
