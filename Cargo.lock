@@ -25,6 +25,7 @@ dependencies = [
  "biome_rowan",
  "rustc-hash",
  "type_info",
+ "visitor",
 ]
 
 [[package]]
@@ -736,6 +737,7 @@ dependencies = [
  "biome_js_syntax",
  "biome_rowan",
  "type_info",
+ "visitor",
 ]
 
 [[package]]

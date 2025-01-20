@@ -8,6 +8,7 @@ use analyzer::Analyzer;
 use biome_js_parser::{parse, JsParserOptions};
 use biome_js_syntax::{AnyJsRoot, JsFileSource, JsSyntaxNode};
 use type_info::type_info::TypeInfo;
+use visitor::AstVisitor;
 
 #[derive(Default)]
 pub struct Server {
@@ -27,7 +28,8 @@ impl Server {
         for path in user_paths {
             let content = fs::read_to_string(&path)?;
             let ast = self.parse(&content);
-            analyzer.analyze(&path, ast);
+            analyzer.set_current_path(path);
+            analyzer.visit(&ast);
         }
         Ok(())
     }

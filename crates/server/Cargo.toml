@@ -6,6 +6,7 @@ edition = "2021"
 [dependencies]
 analyzer = { path = "../analyzer" }
 type_info = { path = "../type_info" }
+visitor = { path = "../visitor" }
 
 biome_js_parser = { workspace = true }
 biome_js_syntax = { workspace = true }

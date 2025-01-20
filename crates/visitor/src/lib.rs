@@ -1,8 +1,5 @@
-use biome_rowan::Language;
-use biome_rowan::{SyntaxNode, WalkEvent};
+use biome_js_syntax::AnyJsRoot;
 
 pub trait AstVisitor {
-    type Language: Language;
-
-    fn visit(&mut self, event: WalkEvent<SyntaxNode<Self::Language>>);
+    fn visit(&mut self, ast: &AnyJsRoot);
 }
