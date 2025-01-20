@@ -36,7 +36,8 @@ impl SymbolTable {
 pub struct Analyzer {
     current_path: PathBuf,
     type_info_table: FxHashMap<PathBuf, FxHashMap<JsSyntaxNode, TypeInfo>>,
-    symbol_table: SymbolTable,
+    global_symbols: SymbolTable,
+    local_symbols: FxHashMap<PathBuf, SymbolTable>,
 }
 
 impl Analyzer {
@@ -44,7 +45,8 @@ impl Analyzer {
         Self {
             current_path: PathBuf::new(),
             type_info_table: FxHashMap::default(),
-            symbol_table: SymbolTable::new(),
+            global_symbols: SymbolTable::new(),
+            local_symbols: FxHashMap::default(),
         }
     }
 
@@ -220,7 +222,10 @@ impl Analyzer {
             .or_default()
             .insert(id.clone().into(), function_type.clone());
 
-        self.symbol_table.insert(id.text(), function_type);
+        self.local_symbols
+            .entry(self.current_path.clone())
+            .or_default()
+            .insert(id.text(), function_type);
 
         Ok(())
     }
@@ -282,10 +287,10 @@ impl Analyzer {
 
             AnyTsType::TsReferenceType(node) => {
                 let id = node.name()?;
-                if let Some(referenced_type) = self.symbol_table.get(&id.text()) {
-                    referenced_type.clone()
+                if let Some(referenced_ty) = self.global_symbols.get(&id.text()) {
+                    referenced_ty.clone()
                 } else {
-                    TypeInfo::Unknown
+                    TypeInfo::Reference(id.text())
                 }
             }
 
