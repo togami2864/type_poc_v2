@@ -25,7 +25,7 @@ type myString = string;
 const literal = "example";
 const number_literal = 42;
 const boolean_literal = true;
-const object_literal = {};
+// const object_literal = {};
 const null_literal = null;
 const undefined_literal = undefined;
 
